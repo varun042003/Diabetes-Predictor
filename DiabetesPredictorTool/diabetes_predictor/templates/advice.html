@@ -1,0 +1,234 @@
+{% extends "layout.html" %}
+{% block title %}Health Advice{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-8">
+            {% if prediction == 1 %}
+            <div class="result-card border border-danger rounded-3">
+                <div class="result-icon text-danger">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h2>Higher Risk of Diabetes Detected</h2>
+                <p class="lead">
+                    Based on your input data, our model predicts a higher risk of diabetes.
+                    Please consult with a healthcare professional for a proper diagnosis.
+                </p>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="mb-0"><i class="fas fa-exclamation-circle me-2 text-danger"></i>Important Notice</h3>
+                </div>
+                <div class="card-body">
+                    <p class="lead">
+                        This prediction is not a medical diagnosis. It's based on a machine learning model and 
+                        should be used only as a preliminary risk assessment.
+                    </p>
+                    <p>
+                        We strongly recommend consulting with a healthcare professional to discuss these results 
+                        and for proper diagnostic testing and medical advice.
+                    </p>
+                    <a href="{{ url_for('predict') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-redo me-2"></i>Make Another Prediction
+                    </a>
+                </div>
+            </div>
+            
+            <div class="advice-section">
+                <h3 class="advice-title text-danger">
+                    <i class="fas fa-apple-alt me-2"></i>Dietary Recommendations
+                </h3>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <h4 class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Foods to Include</h4>
+                        <div class="food-item">
+                            <h5>Non-Starchy Vegetables</h5>
+                            <p>Spinach, broccoli, peppers, kale, tomatoes, carrots</p>
+                        </div>
+                        <div class="food-item">
+                            <h5>Lean Proteins</h5>
+                            <p>Chicken, turkey, fish, tofu, legumes, eggs</p>
+                        </div>
+                        <div class="food-item">
+                            <h5>Healthy Fats</h5>
+                            <p>Avocados, olive oil, nuts, seeds</p>
+                        </div>
+                        <div class="food-item">
+                            <h5>Whole Grains (in moderation)</h5>
+                            <p>Brown rice, quinoa, oats, whole wheat bread</p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <h4 class="mb-3"><i class="fas fa-times-circle text-danger me-2"></i>Foods to Avoid</h4>
+                        <div class="food-item">
+                            <h5>Sugary Foods</h5>
+                            <p>Candy, desserts, sodas, sweetened beverages</p>
+                        </div>
+                        <div class="food-item">
+                            <h5>Refined Carbohydrates</h5>
+                            <p>White bread, white rice, pastries, processed snacks</p>
+                        </div>
+                        <div class="food-item">
+                            <h5>Processed Meats</h5>
+                            <p>Sausages, hot dogs, deli meats high in sodium</p>
+                        </div>
+                        <div class="food-item">
+                            <h5>Trans and Saturated Fats</h5>
+                            <p>Fried foods, fatty meats, full-fat dairy products</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h4 class="mb-0"><i class="fas fa-tint me-2 text-info"></i>Water Intake</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Staying hydrated helps control blood sugar levels. Aim for 8-10 glasses of water daily.
+                            </p>
+                            <ul>
+                                <li>Carry a reusable water bottle</li>
+                                <li>Set reminders to drink water regularly</li>
+                                <li>Flavor water with cucumber or lemon if needed</li>
+                                <li>Limit alcohol and caffeine consumption</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h4 class="mb-0"><i class="fas fa-running me-2 text-success"></i>Exercise Tips</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                Regular physical activity improves insulin sensitivity and helps manage blood sugar levels.
+                            </p>
+                            <ul>
+                                <li>Aim for 150 minutes of moderate exercise weekly</li>
+                                <li>Include both aerobic activities and strength training</li>
+                                <li>Start slowly and gradually increase intensity</li>
+                                <li>Consider walking, swimming, cycling, or yoga</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {% else %}
+            <div class="result-card border border-success rounded-3">
+                <div class="result-icon text-success">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Lower Risk of Diabetes Detected</h2>
+                <p class="lead">
+                    Based on your input data, our model predicts a lower risk of diabetes.
+                    Keep up your healthy habits!
+                </p>
+            </div>
+            
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h3 class="mb-0"><i class="fas fa-info-circle me-2 text-info"></i>Keep in Mind</h3>
+                </div>
+                <div class="card-body">
+                    <p>
+                        While your risk appears lower, it's always good to maintain a healthy lifestyle to prevent diabetes 
+                        and other chronic conditions. Regular check-ups with your healthcare provider are still recommended.
+                    </p>
+                    <a href="{{ url_for('predict') }}" class="btn btn-outline-primary">
+                        <i class="fas fa-redo me-2"></i>Make Another Prediction
+                    </a>
+                </div>
+            </div>
+            
+            <div class="advice-section">
+                <h3 class="advice-title text-success">
+                    <i class="fas fa-heart me-2"></i>Tips to Maintain Your Health
+                </h3>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <h4 class="mb-0"><i class="fas fa-utensils me-2 text-success"></i>Nutrition Tips</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>Maintain a balanced diet with plenty of fruits and vegetables</li>
+                                    <li>Choose whole grains over refined carbohydrates</li>
+                                    <li>Include lean proteins in your meals</li>
+                                    <li>Limit processed foods and added sugars</li>
+                                    <li>Stay hydrated with water instead of sugary drinks</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <h4 class="mb-0"><i class="fas fa-dumbbell me-2 text-primary"></i>Physical Activity</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>Aim for at least 30 minutes of moderate activity daily</li>
+                                    <li>Include both cardio and strength training exercises</li>
+                                    <li>Find activities you enjoy to stay motivated</li>
+                                    <li>Break up periods of sitting with short activity breaks</li>
+                                    <li>Consider tracking your steps with a fitness app</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <h4 class="mb-0"><i class="fas fa-moon me-2 text-info"></i>Sleep & Stress</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>Aim for 7-9 hours of quality sleep each night</li>
+                                    <li>Establish a regular sleep schedule</li>
+                                    <li>Practice stress-reduction techniques like meditation</li>
+                                    <li>Take time for activities you enjoy</li>
+                                    <li>Stay connected with supportive friends and family</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-header">
+                                <h4 class="mb-0"><i class="fas fa-calendar-check me-2 text-warning"></i>Regular Monitoring</h4>
+                            </div>
+                            <div class="card-body">
+                                <ul>
+                                    <li>Schedule regular check-ups with your healthcare provider</li>
+                                    <li>Know your numbers (blood pressure, cholesterol, blood glucose)</li>
+                                    <li>Stay up-to-date with recommended health screenings</li>
+                                    <li>Be aware of early warning signs of diabetes</li>
+                                    <li>Consider periodic reassessment of your diabetes risk</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

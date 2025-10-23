@@ -1,0 +1,168 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="bg-dots"></div>
+    <div class="welcome-banner animate-fade-in">
+        <div class="banner-content">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <h1 class="mb-4 gradient-text">Welcome, {{ username }}!</h1>
+                    <p class="lead mb-4">
+                        Taking control of your health starts with understanding your risk factors. 
+                        Use our prediction tool to assess your diabetes risk and get personalized advice.
+                    </p>
+                    <a href="{{ url_for('predict') }}" class="btn btn-primary btn-lg btn-icon">
+                        <i class="fas fa-calculator me-2"></i>Predict Your Risk
+                    </a>
+                </div>
+                <div class="col-lg-5 d-none d-lg-block text-center">
+                    <img src="{{ url_for('static', filename='images/health_check.svg') }}" alt="Health Check" class="banner-image animate-float">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5 stagger-animation">
+        <div class="col-md-4 mb-4">
+            <div class="feature-card">
+                <img src="{{ url_for('static', filename='images/data_analysis.svg') }}" alt="Data Analysis" class="feature-icon">
+                <h4>Predict Risk</h4>
+                <p>
+                    Our machine learning model analyzes your health indicators to assess your diabetes risk with high accuracy.
+                </p>
+                <a href="{{ url_for('predict') }}" class="btn btn-primary btn-icon mt-3">
+                    <i class="fas fa-arrow-right"></i> Start Prediction
+                </a>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="feature-card">
+                <img src="{{ url_for('static', filename='images/healthy_lifestyle.svg') }}" alt="Healthy Lifestyle" class="feature-icon">
+                <h4>Personalized Advice</h4>
+                <p>
+                    Receive tailored nutrition and lifestyle recommendations based on your unique health profile.
+                </p>
+                <a href="{{ url_for('predict') }}" class="btn btn-primary btn-icon mt-3">
+                    <i class="fas fa-leaf"></i> Get Guidance
+                </a>
+            </div>
+        </div>
+        
+        <div class="col-md-4 mb-4">
+            <div class="feature-card">
+                <img src="{{ url_for('static', filename='images/health_check.svg') }}" alt="Health Monitoring" class="feature-icon">
+                <h4>Health Monitoring</h4>
+                <p>
+                    Track your health indicators over time and visualize your progress toward better health outcomes.
+                </p>
+                <button class="btn btn-outline-primary btn-icon mt-3" disabled>
+                    <i class="fas fa-chart-line"></i> Coming Soon
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card animate-fade-in" style="animation-delay: 0.3s;">
+                <div class="card-header">
+                    <h4 class="mb-0"><i class="fas fa-info-circle me-2 text-info"></i>Understanding Diabetes Risk</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <p>
+                                Diabetes is a chronic condition that affects how your body turns food into energy. 
+                                If you have diabetes, your body either doesn't make enough insulin or can't use the insulin it makes as well as it should.
+                            </p>
+                            <p>
+                                Our prediction tool analyzes several important factors that contribute to diabetes risk:
+                            </p>
+                            <div class="row mt-4">
+                                <div class="col-md-6">
+                                    <div class="mb-3 d-flex align-items-start">
+                                        <div class="me-3 text-primary">
+                                            <i class="fas fa-chart-line fa-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Glucose Level</h6>
+                                            <p class="mb-0 small">How your body processes and manages blood sugar</p>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 d-flex align-items-start">
+                                        <div class="me-3 text-primary">
+                                            <i class="fas fa-heartbeat fa-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Blood Pressure</h6>
+                                            <p class="mb-0 small">Force of blood against your artery walls</p>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 d-flex align-items-start">
+                                        <div class="me-3 text-primary">
+                                            <i class="fas fa-weight fa-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">BMI (Body Mass Index)</h6>
+                                            <p class="mb-0 small">Measure of body fat based on height and weight</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3 d-flex align-items-start">
+                                        <div class="me-3 text-primary">
+                                            <i class="fas fa-syringe fa-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Insulin</h6>
+                                            <p class="mb-0 small">Hormone that regulates blood sugar</p>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 d-flex align-items-start">
+                                        <div class="me-3 text-primary">
+                                            <i class="fas fa-birthday-cake fa-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Age</h6>
+                                            <p class="mb-0 small">Diabetes risk increases with age</p>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 d-flex align-items-start">
+                                        <div class="me-3 text-primary">
+                                            <i class="fas fa-dna fa-lg"></i>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-1">Diabetes Pedigree Function</h6>
+                                            <p class="mb-0 small">Genetic influence for diabetes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="p-4 rounded" style="background: linear-gradient(135deg, rgba(77, 171, 247, 0.1) 0%, rgba(34, 139, 230, 0.05) 100%); border: 1px solid rgba(77, 171, 247, 0.2);">
+                                <div class="text-center mb-3">
+                                    <i class="fas fa-lightbulb fa-2x text-warning mb-2 animate-pulse"></i>
+                                    <h5 class="mb-3">Did You Know?</h5>
+                                </div>
+                                <p>Over 422 million people worldwide have diabetes, and 1.5 million deaths are directly attributed to diabetes each year.</p>
+                                <div class="mt-3 pt-3 border-top border-light">
+                                    <p class="mb-0 small text-body-secondary">Source: World Health Organization</p>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-center">
+                                <a href="{{ url_for('predict') }}" class="btn btn-primary btn-lg btn-icon">
+                                    <i class="fas fa-calculator me-2"></i>Check Your Risk Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-wave"></div>
+</div>
+{% endblock %}
